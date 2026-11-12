@@ -1,0 +1,32 @@
+{
+  "id": "/",
+  "name": "JyotishWala - ऋषिकेश पंचांग एवं वैदिक कुंडली",
+  "short_name": "JyotishWala",
+  "description": "ऋषिकेश पंचांग, प्रामाणिक जन्मकुंडली, चंद्र व नवांश चक्र, अष्टकूट गुण मिलान एवं दैनिक राशिफल।",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FAF7F2",
+  "theme_color": "#008080",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

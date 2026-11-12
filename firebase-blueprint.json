@@ -1,0 +1,688 @@
+{
+  "entities": {
+    "AdminRole": {
+      "title": "AdminRole",
+      "description": "Trusted administrator and team member role assignment document",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the administrator or team member",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Verified Gmail address of the team member",
+          "minLength": 3,
+          "maxLength": 254
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the administrator or team member",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "role": {
+          "type": "string",
+          "description": "Assigned role in JyotishWala",
+          "enum": ["super_admin", "admin", "editor", "writer", "astrologer_expert"],
+          "minLength": 4,
+          "maxLength": 32
+        },
+        "avatar": {
+          "type": "string",
+          "description": "Avatar URL or compressed data URI",
+          "minLength": 1,
+          "maxLength": 250000
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the admin record was created"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the admin record was last updated"
+        }
+      },
+      "required": ["uid", "email", "name", "role", "avatar", "createdAt", "updatedAt"]
+    },
+    "Article": {
+      "title": "Article",
+      "description": "Public Vedic astrology blog post and SEO metadata",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique article identifier",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "title": {
+          "type": "string",
+          "description": "Headline title of the article",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "slug": {
+          "type": "string",
+          "description": "URL-friendly slug",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "category": {
+          "type": "string",
+          "description": "Article category key",
+          "enum": ["Panchang", "Kundli", "Vastu", "Grah Gochar", "Puja", "Remedies"],
+          "minLength": 2,
+          "maxLength": 40
+        },
+        "categoryHindi": {
+          "type": "string",
+          "description": "Hindi display label for the category",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "excerpt": {
+          "type": "string",
+          "description": "Short summary of the article",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "content": {
+          "type": "string",
+          "description": "Full article body content",
+          "minLength": 1,
+          "maxLength": 50000
+        },
+        "author": {
+          "type": "string",
+          "description": "Author name",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "authorRole": {
+          "type": "string",
+          "description": "Author designation",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "publishedAt": {
+          "type": "string",
+          "description": "Publication date string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "readTime": {
+          "type": "string",
+          "description": "Estimated reading time label",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "Featured image URL or compressed data URI",
+          "minLength": 1,
+          "maxLength": 350000
+        },
+        "imageAlt": {
+          "type": "string",
+          "description": "Image alt text for SEO",
+          "minLength": 0,
+          "maxLength": 300
+        },
+        "tags": {
+          "type": "array",
+          "description": "Bounded list of up to 10 article tags"
+        },
+        "views": {
+          "type": "number",
+          "description": "View counter"
+        },
+        "isPublished": {
+          "type": "boolean",
+          "description": "Whether the article is publicly visible"
+        },
+        "authorUid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the admin/editor who saved the article",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "slug",
+        "category",
+        "categoryHindi",
+        "excerpt",
+        "content",
+        "author",
+        "authorRole",
+        "publishedAt",
+        "readTime",
+        "imageUrl",
+        "tags",
+        "views",
+        "isPublished",
+        "authorUid",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Pandit": {
+      "title": "Pandit",
+      "description": "Verified Vedic astrologer (Pandit Ji) directory profile",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique pandit profile ID",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "name": {
+          "type": "string",
+          "description": "Pandit Ji full name",
+          "minLength": 1,
+          "maxLength": 150
+        },
+        "qualification": {
+          "type": "string",
+          "description": "Academic and Vedic qualification",
+          "minLength": 1,
+          "maxLength": 250
+        },
+        "experienceYears": {
+          "type": "number",
+          "description": "Years of experience in Vedic astrology"
+        },
+        "specialties": {
+          "type": "array",
+          "description": "Bounded list of up to 10 astrology specialties"
+        },
+        "languages": {
+          "type": "array",
+          "description": "Bounded list of up to 10 spoken languages"
+        },
+        "mobile": {
+          "type": "string",
+          "description": "Public consultation contact number",
+          "minLength": 3,
+          "maxLength": 40
+        },
+        "email": {
+          "type": "string",
+          "description": "Public consultation contact email",
+          "minLength": 3,
+          "maxLength": 254
+        },
+        "address": {
+          "type": "string",
+          "description": "Location / Ashram address",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "avatar": {
+          "type": "string",
+          "description": "Pandit profile image URL or compressed data URI",
+          "minLength": 1,
+          "maxLength": 350000
+        },
+        "qrCodeUrl": {
+          "type": "string",
+          "description": "Dakshina payment QR code image URL or data URI",
+          "minLength": 0,
+          "maxLength": 350000
+        },
+        "dakshinaInfo": {
+          "type": "string",
+          "description": "Consultation fee / dakshina description",
+          "minLength": 1,
+          "maxLength": 150
+        },
+        "about": {
+          "type": "string",
+          "description": "Detailed biography of the Pandit Ji",
+          "minLength": 0,
+          "maxLength": 3000
+        },
+        "isActive": {
+          "type": "boolean",
+          "description": "Whether the Pandit profile is publicly listed"
+        },
+        "updatedByUid": {
+          "type": "string",
+          "description": "Admin UID who created or updated the record",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of update"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "qualification",
+        "experienceYears",
+        "specialties",
+        "languages",
+        "mobile",
+        "email",
+        "address",
+        "avatar",
+        "qrCodeUrl",
+        "dakshinaInfo",
+        "about",
+        "isActive",
+        "updatedByUid",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Horoscope": {
+      "title": "Horoscope",
+      "description": "Daily, monthly, or yearly Rashifal prediction for a zodiac sign",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Composite ID <period>_<signIndex>",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "period": {
+          "type": "string",
+          "enum": ["daily", "monthly", "yearly"],
+          "description": "Horoscope period",
+          "minLength": 5,
+          "maxLength": 10
+        },
+        "signIndex": {
+          "type": "number",
+          "description": "Zodiac sign index 0 to 11"
+        },
+        "signName": {
+          "type": "string",
+          "description": "English sign name",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "hindiName": {
+          "type": "string",
+          "description": "Hindi sign name",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "symbol": {
+          "type": "string",
+          "description": "Zodiac symbol",
+          "minLength": 1,
+          "maxLength": 16
+        },
+        "dateRange": {
+          "type": "string",
+          "description": "Solar date range string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "ruler": {
+          "type": "string",
+          "description": "Planetary ruler name",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "element": {
+          "type": "string",
+          "description": "Elemental nature",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "general": {
+          "type": "string",
+          "description": "General prediction text",
+          "minLength": 1,
+          "maxLength": 3000
+        },
+        "career": {
+          "type": "string",
+          "description": "Career prediction text",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "love": {
+          "type": "string",
+          "description": "Love and family prediction text",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "health": {
+          "type": "string",
+          "description": "Health prediction text",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "finance": {
+          "type": "string",
+          "description": "Finance prediction text",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "luckyNumber": {
+          "type": "number",
+          "description": "Lucky number"
+        },
+        "luckyColor": {
+          "type": "string",
+          "description": "Lucky color name",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "luckyColorHex": {
+          "type": "string",
+          "description": "Hex color code",
+          "minLength": 4,
+          "maxLength": 16
+        },
+        "luckyTime": {
+          "type": "string",
+          "description": "Auspicious time window",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "remedy": {
+          "type": "string",
+          "description": "Vedic remedy recommendation",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "isPublic": {
+          "type": "boolean",
+          "description": "Whether prediction is publicly readable"
+        },
+        "updatedByUid": {
+          "type": "string",
+          "description": "Admin UID who updated the prediction",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update"
+        }
+      },
+      "required": [
+        "id",
+        "period",
+        "signIndex",
+        "signName",
+        "hindiName",
+        "symbol",
+        "dateRange",
+        "ruler",
+        "element",
+        "general",
+        "career",
+        "love",
+        "health",
+        "finance",
+        "luckyNumber",
+        "luckyColor",
+        "luckyColorHex",
+        "luckyTime",
+        "remedy",
+        "isPublic",
+        "updatedByUid",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "SavedKundli": {
+      "title": "SavedKundli",
+      "description": "Private user-saved Janam Kundli birth parameters",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique Kundli ID",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "ownerId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the owner",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "name": {
+          "type": "string",
+          "description": "Native's full name",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "gender": {
+          "type": "string",
+          "enum": ["male", "female", "other"],
+          "description": "Gender of the native",
+          "minLength": 4,
+          "maxLength": 10
+        },
+        "birthDate": {
+          "type": "string",
+          "description": "Birth date in YYYY-MM-DD format",
+          "minLength": 8,
+          "maxLength": 20
+        },
+        "birthTime": {
+          "type": "string",
+          "description": "Birth time in HH:MM format",
+          "minLength": 4,
+          "maxLength": 12
+        },
+        "birthPlace": {
+          "type": "string",
+          "description": "Birth city/location name",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "latitude": {
+          "type": "number",
+          "description": "Geographic latitude"
+        },
+        "longitude": {
+          "type": "number",
+          "description": "Geographic longitude"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when saved"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when last updated"
+        }
+      },
+      "required": [
+        "id",
+        "ownerId",
+        "name",
+        "gender",
+        "birthDate",
+        "birthTime",
+        "birthPlace",
+        "latitude",
+        "longitude",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "PaymentReceipt": {
+      "title": "PaymentReceipt",
+      "description": "Private consultation dakshina payment receipt submitted by a user",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Receipt identifier",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "submitterUid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the submitting user",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "panditId": {
+          "type": "string",
+          "description": "Target Pandit ID",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "panditName": {
+          "type": "string",
+          "description": "Target Pandit Name",
+          "minLength": 1,
+          "maxLength": 150
+        },
+        "userName": {
+          "type": "string",
+          "description": "Name of the user who paid",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "userPhone": {
+          "type": "string",
+          "description": "Phone/WhatsApp number of the user",
+          "minLength": 3,
+          "maxLength": 30
+        },
+        "userEmail": {
+          "type": "string",
+          "description": "Optional email of the user",
+          "minLength": 0,
+          "maxLength": 254
+        },
+        "amount": {
+          "type": "string",
+          "description": "Dakshina amount paid",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "utrNumber": {
+          "type": "string",
+          "description": "UPI UTR or transaction reference number",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "note": {
+          "type": "string",
+          "description": "Optional consultation note",
+          "minLength": 0,
+          "maxLength": 1000
+        },
+        "receiptImageUrl": {
+          "type": "string",
+          "description": "Optional compressed receipt screenshot data URI",
+          "minLength": 0,
+          "maxLength": 450000
+        },
+        "submittedAt": {
+          "type": "string",
+          "description": "Human-readable submission timestamp",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "adminEmail": {
+          "type": "string",
+          "description": "Admin recipient email",
+          "minLength": 3,
+          "maxLength": 254
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation"
+        }
+      },
+      "required": [
+        "id",
+        "submitterUid",
+        "panditId",
+        "panditName",
+        "userName",
+        "userPhone",
+        "userEmail",
+        "amount",
+        "utrNumber",
+        "note",
+        "receiptImageUrl",
+        "submittedAt",
+        "adminEmail",
+        "createdAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/admins/{adminId}": {
+      "schema": { "$ref": "#/entities/AdminRole" },
+      "description": "Trusted administrator and team member role records"
+    },
+    "/articles/{articleId}": {
+      "schema": { "$ref": "#/entities/Article" },
+      "description": "Public Vedic astrology blog articles and SEO metadata"
+    },
+    "/pandits/{panditId}": {
+      "schema": { "$ref": "#/entities/Pandit" },
+      "description": "Verified Vedic astrologer directory profiles"
+    },
+    "/horoscopes/{horoscopeId}": {
+      "schema": { "$ref": "#/entities/Horoscope" },
+      "description": "Daily, monthly, and yearly Rashifal predictions"
+    },
+    "/users/{userId}/savedKundlis/{kundliId}": {
+      "schema": { "$ref": "#/entities/SavedKundli" },
+      "description": "Private user-saved Janam Kundli charts isolated per user"
+    },
+    "/paymentReceipts/{receiptId}": {
+      "schema": { "$ref": "#/entities/PaymentReceipt" },
+      "description": "Private consultation payment receipts visible only to the submitter and admins"
+    }
+  }
+}

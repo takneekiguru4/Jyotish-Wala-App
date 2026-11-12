@@ -1,0 +1,377 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // =========================================================================
+    // 1. GLOBAL SAFETY NET (Default-Deny Catch-All)
+    // =========================================================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // =========================================================================
+    // 2. HARDENED GLOBAL PRIMITIVES
+    // =========================================================================
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerifiedUser() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isBootstrappedOwner() {
+      return isVerifiedUser() && request.auth.token.email == 'takneekiguru4@gmail.com';
+    }
+
+    function isAdmin() {
+      return isBootstrappedOwner() || (
+        isVerifiedUser() &&
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    // =========================================================================
+    // 3. ENTITY VALIDATION BLUEPRINTS (Strict Keys, Types & Boundaries)
+    // =========================================================================
+    function isValidAdminRole(data) {
+      return data.keys().hasAll(['uid', 'email', 'name', 'role', 'avatar', 'createdAt', 'updatedAt']) &&
+        data.keys().hasOnly(['uid', 'email', 'name', 'role', 'avatar', 'createdAt', 'updatedAt']) &&
+        data.uid is string && data.uid.size() >= 1 && data.uid.size() <= 128 && data.uid.matches('^[a-zA-Z0-9_\\-]+$') &&
+        data.email is string && data.email.size() >= 3 && data.email.size() <= 254 &&
+        data.name is string && data.name.size() >= 1 && data.name.size() <= 120 &&
+        data.role is string && data.role.size() >= 4 && data.role.size() <= 32 &&
+        data.role in ['super_admin', 'admin', 'editor', 'writer', 'astrologer_expert'] &&
+        data.avatar is string && data.avatar.size() >= 1 && data.avatar.size() <= 250000 &&
+        data.createdAt is timestamp &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidArticle(data) {
+      return data.keys().hasAll([
+          'id', 'title', 'slug', 'category', 'categoryHindi', 'excerpt', 'content',
+          'author', 'authorRole', 'publishedAt', 'readTime', 'imageUrl', 'tags',
+          'views', 'isPublished', 'authorUid', 'createdAt', 'updatedAt'
+        ]) &&
+        data.keys().hasOnly([
+          'id', 'title', 'slug', 'category', 'categoryHindi', 'excerpt', 'content',
+          'author', 'authorRole', 'publishedAt', 'readTime', 'imageUrl', 'imageAlt',
+          'tags', 'views', 'isPublished', 'authorUid', 'createdAt', 'updatedAt'
+        ]) &&
+        data.id is string && data.id.size() >= 1 && data.id.size() <= 128 && data.id.matches('^[a-zA-Z0-9_\\-]+$') &&
+        data.title is string && data.title.size() >= 1 && data.title.size() <= 300 &&
+        data.slug is string && data.slug.size() >= 1 && data.slug.size() <= 200 &&
+        data.category is string && data.category.size() >= 2 && data.category.size() <= 40 &&
+        data.category in ['Panchang', 'Kundli', 'Vastu', 'Grah Gochar', 'Puja', 'Remedies'] &&
+        data.categoryHindi is string && data.categoryHindi.size() >= 1 && data.categoryHindi.size() <= 80 &&
+        data.excerpt is string && data.excerpt.size() >= 1 && data.excerpt.size() <= 1000 &&
+        data.content is string && data.content.size() >= 1 && data.content.size() <= 50000 &&
+        data.author is string && data.author.size() >= 1 && data.author.size() <= 120 &&
+        data.authorRole is string && data.authorRole.size() >= 1 && data.authorRole.size() <= 120 &&
+        data.publishedAt is string && data.publishedAt.size() >= 1 && data.publishedAt.size() <= 40 &&
+        data.readTime is string && data.readTime.size() >= 1 && data.readTime.size() <= 40 &&
+        data.imageUrl is string && data.imageUrl.size() >= 1 && data.imageUrl.size() <= 350000 &&
+        (!('imageAlt' in data) || (data.imageAlt is string && data.imageAlt.size() <= 300)) &&
+        data.tags is list && data.tags.size() <= 10 &&
+        (data.tags.size() == 0 || (data.tags[0] is string && data.tags[0].size() <= 60)) &&
+        data.views is int && data.views >= 0 &&
+        data.isPublished is bool &&
+        data.authorUid is string && data.authorUid.size() >= 1 && data.authorUid.size() <= 128 &&
+        data.authorUid == request.auth.uid &&
+        data.createdAt is timestamp &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidPandit(data) {
+      return data.keys().hasAll([
+          'id', 'name', 'qualification', 'experienceYears', 'specialties', 'languages',
+          'mobile', 'email', 'address', 'avatar', 'qrCodeUrl', 'dakshinaInfo', 'about',
+          'isActive', 'updatedByUid', 'createdAt', 'updatedAt'
+        ]) &&
+        data.keys().hasOnly([
+          'id', 'name', 'qualification', 'experienceYears', 'specialties', 'languages',
+          'mobile', 'email', 'address', 'avatar', 'qrCodeUrl', 'dakshinaInfo', 'about',
+          'isActive', 'updatedByUid', 'createdAt', 'updatedAt'
+        ]) &&
+        data.id is string && data.id.size() >= 1 && data.id.size() <= 128 && data.id.matches('^[a-zA-Z0-9_\\-]+$') &&
+        data.name is string && data.name.size() >= 1 && data.name.size() <= 150 &&
+        data.qualification is string && data.qualification.size() >= 1 && data.qualification.size() <= 250 &&
+        data.experienceYears is int && data.experienceYears >= 0 && data.experienceYears <= 100 &&
+        data.specialties is list && data.specialties.size() >= 1 && data.specialties.size() <= 10 &&
+        data.specialties[0] is string && data.specialties[0].size() <= 100 &&
+        data.languages is list && data.languages.size() >= 1 && data.languages.size() <= 10 &&
+        data.languages[0] is string && data.languages[0].size() <= 60 &&
+        data.mobile is string && data.mobile.size() >= 3 && data.mobile.size() <= 40 &&
+        data.email is string && data.email.size() >= 3 && data.email.size() <= 254 &&
+        data.address is string && data.address.size() >= 1 && data.address.size() <= 300 &&
+        data.avatar is string && data.avatar.size() >= 1 && data.avatar.size() <= 350000 &&
+        data.qrCodeUrl is string && data.qrCodeUrl.size() <= 350000 &&
+        data.dakshinaInfo is string && data.dakshinaInfo.size() >= 1 && data.dakshinaInfo.size() <= 150 &&
+        data.about is string && data.about.size() <= 3000 &&
+        data.isActive is bool &&
+        data.updatedByUid is string && data.updatedByUid.size() >= 1 && data.updatedByUid.size() <= 128 &&
+        data.updatedByUid == request.auth.uid &&
+        data.createdAt is timestamp &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidHoroscope(data) {
+      return data.keys().hasAll([
+          'id', 'period', 'signIndex', 'signName', 'hindiName', 'symbol', 'dateRange',
+          'ruler', 'element', 'general', 'career', 'love', 'health', 'finance',
+          'luckyNumber', 'luckyColor', 'luckyColorHex', 'luckyTime', 'remedy',
+          'isPublic', 'updatedByUid', 'createdAt', 'updatedAt'
+        ]) &&
+        data.keys().hasOnly([
+          'id', 'period', 'signIndex', 'signName', 'hindiName', 'symbol', 'dateRange',
+          'ruler', 'element', 'general', 'career', 'love', 'health', 'finance',
+          'luckyNumber', 'luckyColor', 'luckyColorHex', 'luckyTime', 'remedy',
+          'isPublic', 'updatedByUid', 'createdAt', 'updatedAt'
+        ]) &&
+        data.id is string && data.id.size() >= 1 && data.id.size() <= 64 && data.id.matches('^[a-zA-Z0-9_\\-]+$') &&
+        data.period is string && data.period.size() >= 5 && data.period.size() <= 10 &&
+        data.period in ['daily', 'monthly', 'yearly'] &&
+        data.signIndex is int && data.signIndex >= 0 && data.signIndex <= 11 &&
+        data.signName is string && data.signName.size() >= 1 && data.signName.size() <= 40 &&
+        data.hindiName is string && data.hindiName.size() >= 1 && data.hindiName.size() <= 40 &&
+        data.symbol is string && data.symbol.size() >= 1 && data.symbol.size() <= 16 &&
+        data.dateRange is string && data.dateRange.size() >= 1 && data.dateRange.size() <= 80 &&
+        data.ruler is string && data.ruler.size() >= 1 && data.ruler.size() <= 40 &&
+        data.element is string && data.element.size() >= 1 && data.element.size() <= 40 &&
+        data.general is string && data.general.size() >= 1 && data.general.size() <= 3000 &&
+        data.career is string && data.career.size() >= 1 && data.career.size() <= 2000 &&
+        data.love is string && data.love.size() >= 1 && data.love.size() <= 2000 &&
+        data.health is string && data.health.size() >= 1 && data.health.size() <= 2000 &&
+        data.finance is string && data.finance.size() >= 1 && data.finance.size() <= 2000 &&
+        data.luckyNumber is int && data.luckyNumber >= 1 && data.luckyNumber <= 99 &&
+        data.luckyColor is string && data.luckyColor.size() >= 1 && data.luckyColor.size() <= 60 &&
+        data.luckyColorHex is string && data.luckyColorHex.size() >= 4 && data.luckyColorHex.size() <= 16 &&
+        data.luckyTime is string && data.luckyTime.size() >= 1 && data.luckyTime.size() <= 100 &&
+        data.remedy is string && data.remedy.size() >= 1 && data.remedy.size() <= 1000 &&
+        data.isPublic is bool &&
+        data.updatedByUid is string && data.updatedByUid.size() >= 1 && data.updatedByUid.size() <= 128 &&
+        data.updatedByUid == request.auth.uid &&
+        data.createdAt is timestamp &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidSavedKundli(data) {
+      return data.keys().hasAll([
+          'id', 'ownerId', 'name', 'gender', 'birthDate', 'birthTime',
+          'birthPlace', 'latitude', 'longitude', 'createdAt', 'updatedAt'
+        ]) &&
+        data.keys().hasOnly([
+          'id', 'ownerId', 'name', 'gender', 'birthDate', 'birthTime',
+          'birthPlace', 'latitude', 'longitude', 'createdAt', 'updatedAt'
+        ]) &&
+        data.id is string && data.id.size() >= 1 && data.id.size() <= 128 && data.id.matches('^[a-zA-Z0-9_\\-]+$') &&
+        data.ownerId is string && data.ownerId.size() >= 1 && data.ownerId.size() <= 128 &&
+        data.ownerId == request.auth.uid &&
+        data.name is string && data.name.size() >= 1 && data.name.size() <= 120 &&
+        data.gender is string && data.gender.size() >= 4 && data.gender.size() <= 10 &&
+        data.gender in ['male', 'female', 'other'] &&
+        data.birthDate is string && data.birthDate.size() >= 8 && data.birthDate.size() <= 20 &&
+        data.birthTime is string && data.birthTime.size() >= 4 && data.birthTime.size() <= 12 &&
+        data.birthPlace is string && data.birthPlace.size() >= 1 && data.birthPlace.size() <= 200 &&
+        (data.latitude is number) && data.latitude >= -90 && data.latitude <= 90 &&
+        (data.longitude is number) && data.longitude >= -180 && data.longitude <= 180 &&
+        data.createdAt is timestamp &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidPaymentReceipt(data) {
+      return data.keys().hasAll([
+          'id', 'submitterUid', 'panditId', 'panditName', 'userName', 'userPhone',
+          'userEmail', 'amount', 'utrNumber', 'note', 'receiptImageUrl',
+          'submittedAt', 'adminEmail', 'createdAt'
+        ]) &&
+        data.keys().hasOnly([
+          'id', 'submitterUid', 'panditId', 'panditName', 'userName', 'userPhone',
+          'userEmail', 'amount', 'utrNumber', 'note', 'receiptImageUrl',
+          'submittedAt', 'adminEmail', 'createdAt'
+        ]) &&
+        data.id is string && data.id.size() >= 1 && data.id.size() <= 128 && data.id.matches('^[a-zA-Z0-9_\\-]+$') &&
+        data.submitterUid is string && data.submitterUid.size() >= 1 && data.submitterUid.size() <= 128 &&
+        data.submitterUid == request.auth.uid &&
+        data.panditId is string && data.panditId.size() >= 1 && data.panditId.size() <= 128 &&
+        data.panditName is string && data.panditName.size() >= 1 && data.panditName.size() <= 150 &&
+        data.userName is string && data.userName.size() >= 1 && data.userName.size() <= 120 &&
+        data.userPhone is string && data.userPhone.size() >= 3 && data.userPhone.size() <= 30 &&
+        data.userEmail is string && data.userEmail.size() <= 254 &&
+        data.amount is string && data.amount.size() >= 1 && data.amount.size() <= 40 &&
+        data.utrNumber is string && data.utrNumber.size() >= 1 && data.utrNumber.size() <= 80 &&
+        data.note is string && data.note.size() <= 1000 &&
+        data.receiptImageUrl is string && data.receiptImageUrl.size() <= 450000 &&
+        data.submittedAt is string && data.submittedAt.size() >= 1 && data.submittedAt.size() <= 80 &&
+        data.adminEmail is string && data.adminEmail.size() >= 3 && data.adminEmail.size() <= 254 &&
+        data.createdAt is timestamp;
+    }
+
+    // =========================================================================
+    // 4. COLLECTION MATCH BLOCKS
+    // =========================================================================
+
+    // --- Collection 1: /admins/{adminId} ---
+    match /admins/{adminId} {
+      allow get: if isVerifiedUser() && isValidId(adminId) && (request.auth.uid == adminId || isAdmin());
+      allow list: if isVerifiedUser() && (existing().uid == request.auth.uid || isAdmin());
+      allow create: if isAdmin() &&
+        isValidId(adminId) &&
+        isValidAdminRole(incoming()) &&
+        incoming().uid == adminId &&
+        incoming().createdAt == request.time &&
+        incoming().updatedAt == request.time;
+      allow update: if isAdmin() &&
+        isValidId(adminId) &&
+        isValidAdminRole(incoming()) &&
+        incoming().uid == existing().uid &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().updatedAt == request.time &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['email', 'name', 'role', 'avatar', 'updatedAt']);
+      allow delete: if isBootstrappedOwner() && isValidId(adminId);
+    }
+
+    // --- Collection 2: /articles/{articleId} ---
+    match /articles/{articleId} {
+      allow get: if isValidId(articleId) && (existing().isPublished == true || isAdmin());
+      allow list: if existing().isPublished == true || isAdmin();
+      allow create: if isAdmin() &&
+        isValidId(articleId) &&
+        isValidArticle(incoming()) &&
+        incoming().id == articleId &&
+        incoming().createdAt == request.time &&
+        incoming().updatedAt == request.time;
+      allow update: if isAdmin() &&
+        isValidId(articleId) &&
+        isValidArticle(incoming()) &&
+        incoming().id == existing().id &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().updatedAt == request.time &&
+        incoming().diff(existing()).affectedKeys().hasOnly([
+          'title', 'slug', 'category', 'categoryHindi', 'excerpt', 'content',
+          'author', 'authorRole', 'publishedAt', 'readTime', 'imageUrl', 'imageAlt',
+          'tags', 'views', 'isPublished', 'authorUid', 'updatedAt'
+        ]);
+      allow delete: if isAdmin() && isValidId(articleId);
+    }
+
+    // --- Collection 3: /pandits/{panditId} ---
+    match /pandits/{panditId} {
+      allow get: if isValidId(panditId) && (existing().isActive == true || isAdmin());
+      allow list: if existing().isActive == true || isAdmin();
+      allow create: if isAdmin() &&
+        isValidId(panditId) &&
+        isValidPandit(incoming()) &&
+        incoming().id == panditId &&
+        incoming().createdAt == request.time &&
+        incoming().updatedAt == request.time;
+      allow update: if isAdmin() &&
+        isValidId(panditId) &&
+        isValidPandit(incoming()) &&
+        incoming().id == existing().id &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().updatedAt == request.time &&
+        incoming().diff(existing()).affectedKeys().hasOnly([
+          'name', 'qualification', 'experienceYears', 'specialties', 'languages',
+          'mobile', 'email', 'address', 'avatar', 'qrCodeUrl', 'dakshinaInfo',
+          'about', 'isActive', 'updatedByUid', 'updatedAt'
+        ]);
+      allow delete: if isAdmin() && isValidId(panditId);
+    }
+
+    // --- Collection 4: /horoscopes/{horoscopeId} ---
+    match /horoscopes/{horoscopeId} {
+      allow get: if isValidId(horoscopeId) && (existing().isPublic == true || isAdmin());
+      allow list: if existing().isPublic == true || isAdmin();
+      allow create: if isAdmin() &&
+        isValidId(horoscopeId) &&
+        isValidHoroscope(incoming()) &&
+        incoming().id == horoscopeId &&
+        incoming().createdAt == request.time &&
+        incoming().updatedAt == request.time;
+      allow update: if isAdmin() &&
+        isValidId(horoscopeId) &&
+        isValidHoroscope(incoming()) &&
+        incoming().id == existing().id &&
+        incoming().period == existing().period &&
+        incoming().signIndex == existing().signIndex &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().updatedAt == request.time &&
+        incoming().diff(existing()).affectedKeys().hasOnly([
+          'signName', 'hindiName', 'symbol', 'dateRange', 'ruler', 'element',
+          'general', 'career', 'love', 'health', 'finance', 'luckyNumber',
+          'luckyColor', 'luckyColorHex', 'luckyTime', 'remedy', 'isPublic',
+          'updatedByUid', 'updatedAt'
+        ]);
+      allow delete: if isAdmin() && isValidId(horoscopeId);
+    }
+
+    // --- Collection 5: /users/{userId}/savedKundlis/{kundliId} ---
+    match /users/{userId}/savedKundlis/{kundliId} {
+      allow get: if isVerifiedUser() &&
+        isValidId(userId) &&
+        isValidId(kundliId) &&
+        request.auth.uid == userId &&
+        existing().ownerId == request.auth.uid;
+      allow list: if isVerifiedUser() &&
+        request.auth.uid == userId &&
+        existing().ownerId == request.auth.uid;
+      allow create: if isVerifiedUser() &&
+        isValidId(userId) &&
+        isValidId(kundliId) &&
+        request.auth.uid == userId &&
+        isValidSavedKundli(incoming()) &&
+        incoming().id == kundliId &&
+        incoming().createdAt == request.time &&
+        incoming().updatedAt == request.time;
+      allow update: if isVerifiedUser() &&
+        isValidId(userId) &&
+        isValidId(kundliId) &&
+        request.auth.uid == userId &&
+        isValidSavedKundli(incoming()) &&
+        incoming().id == existing().id &&
+        incoming().ownerId == existing().ownerId &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().updatedAt == request.time &&
+        incoming().diff(existing()).affectedKeys().hasOnly([
+          'name', 'gender', 'birthDate', 'birthTime', 'birthPlace',
+          'latitude', 'longitude', 'updatedAt'
+        ]);
+      allow delete: if isVerifiedUser() &&
+        isValidId(userId) &&
+        isValidId(kundliId) &&
+        request.auth.uid == userId &&
+        existing().ownerId == request.auth.uid;
+    }
+
+    // --- Collection 6: /paymentReceipts/{receiptId} ---
+    match /paymentReceipts/{receiptId} {
+      allow get: if isVerifiedUser() &&
+        isValidId(receiptId) &&
+        (existing().submitterUid == request.auth.uid || isAdmin());
+      allow list: if isVerifiedUser() &&
+        (existing().submitterUid == request.auth.uid || isAdmin());
+      allow create: if isVerifiedUser() &&
+        isValidId(receiptId) &&
+        isValidPaymentReceipt(incoming()) &&
+        incoming().id == receiptId &&
+        incoming().createdAt == request.time &&
+        exists(/databases/$(database)/documents/pandits/$(incoming().panditId));
+      allow update: if false;
+      allow delete: if isAdmin() && isValidId(receiptId);
+    }
+  }
+}

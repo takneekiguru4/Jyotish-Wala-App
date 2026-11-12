@@ -1,0 +1,665 @@
+/**
+ * JyotishWala Backend — Complete Responsive, Zero-Overflow WordPress Admin UI
+ * Version: 1.3.0
+ */
+
+.jw-wrap,
+.jw-wrap *,
+.jw-wrap *::before,
+.jw-wrap *::after {
+    box-sizing: border-box;
+}
+
+.jw-wrap {
+    width: 100%;
+    max-width: 1260px;
+    margin: 16px 0 40px 0;
+    padding-right: 18px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    color: #1e293b;
+    overflow-x: hidden;
+}
+
+@media (max-width: 782px) {
+    .jw-wrap {
+        padding-right: 8px;
+        margin-top: 8px;
+    }
+}
+
+/* ==========================================================================
+   1. Top Admin Header & Navigation Tabs (class-admin-menu.php)
+   ========================================================================== */
+.jw-admin-header,
+.jw-header {
+    background: linear-gradient(135deg, #0f766e 0%, #115e59 58%, #ea580c 100%);
+    color: #ffffff;
+    padding: 20px 22px 16px 22px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    box-shadow: 0 6px 20px rgba(15, 118, 110, 0.16);
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+@media (max-width: 640px) {
+    .jw-admin-header,
+    .jw-header {
+        padding: 14px;
+        border-radius: 12px;
+    }
+}
+
+.jw-admin-header-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.jw-admin-header-top > div:first-child {
+    flex: 1 1 260px;
+    min-width: 0;
+}
+
+.jw-admin-header h1,
+.jw-header h1 {
+    color: #ffffff !important;
+    margin: 0 0 6px 0 !important;
+    padding: 0 !important;
+    font-size: 20px !important;
+    font-weight: 800 !important;
+    line-height: 1.3 !important;
+    word-break: break-word;
+}
+
+.jw-admin-header p,
+.jw-header p {
+    color: rgba(255, 255, 255, 0.92) !important;
+    margin: 0 !important;
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+    word-break: break-word;
+}
+
+.jw-admin-badge,
+.jw-badge-version {
+    background: rgba(15, 23, 42, 0.32);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: #ffffff;
+    padding: 7px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    max-width: 100%;
+    word-break: break-word;
+}
+
+.jw-admin-badge code {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fde047;
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: 11px;
+    word-break: break-all;
+}
+
+.jw-dot {
+    opacity: 0.65;
+}
+
+/* Main Module Navigation Tabs */
+.jw-admin-tabs,
+.jw-nav-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+}
+
+.jw-tab,
+.jw-nav-tab {
+    text-decoration: none !important;
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.94) !important;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    transition: all 0.15s ease;
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+.jw-tab:hover,
+.jw-nav-tab:hover {
+    background: rgba(255, 255, 255, 0.24);
+    color: #ffffff !important;
+}
+
+.jw-tab.active,
+.jw-nav-tab.active {
+    background: #ffffff !important;
+    color: #0f766e !important;
+    border-color: #ffffff !important;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Sub-tabs inside Content & Rashifal (content.php) */
+.jw-subtabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    padding: 12px 14px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    width: 100%;
+    max-width: 100%;
+}
+
+.jw-subtab {
+    text-decoration: none !important;
+    padding: 8px 13px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #334155 !important;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    transition: all 0.15s ease;
+    line-height: 1.3;
+}
+
+.jw-subtab:hover {
+    background: #ffedd5;
+    color: #c2410c !important;
+    border-color: #fed7aa;
+}
+
+.jw-subtab.active {
+    background: #ea580c !important;
+    color: #ffffff !important;
+    border-color: #c2410c !important;
+    box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25);
+}
+
+/* ==========================================================================
+   2. Cards, Item Cards & Responsive Layout Grids (Zero Horizontal Scroll)
+   ========================================================================== */
+.jw-card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.05);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+@media (max-width: 640px) {
+    .jw-card {
+        padding: 14px;
+    }
+}
+
+.jw-card h2,
+.jw-card h3 {
+    margin-top: 0 !important;
+    margin-bottom: 14px !important;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f1f5f9;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #0f172a;
+    line-height: 1.35 !important;
+    word-break: break-word;
+}
+
+.jw-card h4 {
+    margin: 14px 0 8px 0 !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #0f766e;
+    word-break: break-word;
+}
+
+.jw-card p {
+    word-break: break-word;
+    max-width: 100%;
+}
+
+/* Self-contained Item Cards (for API Vault, Rashifal, Banners, Receipts, Reviews) */
+.jw-item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+    gap: 16px;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 12px;
+}
+
+.jw-item-card {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid #0f766e;
+    border-radius: 12px;
+    padding: 16px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.jw-item-card.jw-border-saffron {
+    border-left-color: #ea580c;
+}
+
+.jw-item-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.jw-item-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+    word-break: break-word;
+}
+
+.jw-field-group {
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.jw-field-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 4px;
+}
+
+.jw-actions-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Responsive Grids */
+.jw-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+    gap: 18px;
+    width: 100%;
+    max-width: 100%;
+    align-items: start;
+}
+
+.jw-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    gap: 14px;
+    width: 100%;
+    max-width: 100%;
+    align-items: start;
+}
+
+.jw-grid-4,
+.jw-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+    gap: 14px;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 18px;
+    align-items: stretch;
+}
+
+.jw-grid-2 > *,
+.jw-grid-3 > *,
+.jw-grid-4 > *,
+.jw-stats-grid > *,
+.jw-item-grid > * {
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* Stat Cards */
+.jw-stat-card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid #0f766e;
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    min-width: 0;
+    max-width: 100%;
+}
+
+.jw-stat-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #64748b;
+    letter-spacing: 0.3px;
+    margin-bottom: 6px;
+    word-break: break-word;
+}
+
+.jw-stat-value {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+/* ==========================================================================
+   3. Inputs, Textareas, Selects & Form Tables — Strictly Contained (Mobile-Safe)
+   ========================================================================== */
+.jw-wrap input[type="text"],
+.jw-wrap input[type="url"],
+.jw-wrap input[type="email"],
+.jw-wrap input[type="password"],
+.jw-wrap input[type="number"],
+.jw-wrap input[type="date"],
+.jw-wrap input[type="time"],
+.jw-wrap input[type="tel"],
+.jw-wrap input[type="search"],
+.jw-wrap select,
+.jw-wrap textarea,
+.jw-wrap .regular-text,
+.jw-wrap .large-text {
+    width: 100%;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    border: 1px solid #94a3b8;
+    border-radius: 8px;
+    padding: 8px 11px;
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: #0f172a;
+    background-color: #ffffff;
+}
+
+.jw-wrap input.large-text,
+.jw-wrap textarea.large-text,
+.jw-wrap input.regular-text,
+.jw-wrap select.regular-text {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+@media (max-width: 782px) {
+    .jw-wrap input[type="text"],
+    .jw-wrap input[type="url"],
+    .jw-wrap input[type="email"],
+    .jw-wrap input[type="password"],
+    .jw-wrap input[type="number"],
+    .jw-wrap input[type="date"],
+    .jw-wrap input[type="time"],
+    .jw-wrap input[type="tel"],
+    .jw-wrap input[type="search"],
+    .jw-wrap select,
+    .jw-wrap textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin-bottom: 6px;
+    }
+}
+
+.jw-wrap input[type="text"]:focus,
+.jw-wrap input[type="url"]:focus,
+.jw-wrap input[type="email"]:focus,
+.jw-wrap input[type="password"]:focus,
+.jw-wrap input[type="number"]:focus,
+.jw-wrap select:focus,
+.jw-wrap textarea:focus {
+    border-color: #0f766e !important;
+    box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.18) !important;
+    outline: none !important;
+}
+
+.jw-wrap label {
+    display: inline-block;
+    max-width: 100%;
+    word-break: break-word;
+    font-size: 13px;
+    line-height: 1.45;
+    color: #1e293b;
+}
+
+/* WordPress .form-table inside .jw-wrap */
+.jw-wrap .form-table {
+    width: 100% !important;
+    max-width: 100% !important;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-top: 6px;
+}
+
+.jw-wrap .form-table th {
+    width: 26%;
+    max-width: 240px;
+    padding: 12px 14px 12px 0;
+    vertical-align: top;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e293b;
+    word-break: break-word;
+}
+
+.jw-wrap .form-table td {
+    width: 74%;
+    padding: 10px 0;
+    vertical-align: top;
+    word-break: break-word;
+    max-width: 100%;
+}
+
+@media (max-width: 900px) {
+    .jw-wrap .form-table,
+    .jw-wrap .form-table tbody,
+    .jw-wrap .form-table tr,
+    .jw-wrap .form-table th,
+    .jw-wrap .form-table td {
+        display: block;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .jw-wrap .form-table th {
+        padding: 10px 0 4px 0;
+    }
+
+    .jw-wrap .form-table td {
+        padding: 0 0 12px 0;
+    }
+}
+
+/* ==========================================================================
+   4. Data Tables (.jw-table) — Self-Contained Responsive Table
+   ========================================================================== */
+.jw-table {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-collapse: collapse;
+    margin-top: 10px;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+}
+
+.jw-table thead,
+.jw-table tbody {
+    width: 100%;
+}
+
+.jw-table th {
+    background: #f8fafc;
+    color: #0f172a;
+    font-weight: 700;
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid #cbd5e1;
+    font-size: 12.5px;
+    line-height: 1.35;
+}
+
+.jw-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 13px;
+    line-height: 1.45;
+    vertical-align: top;
+    word-break: break-word;
+}
+
+.jw-table tr:last-child td {
+    border-bottom: none;
+}
+
+.jw-table tr:hover td {
+    background: #f8fafc;
+}
+
+.jw-table code {
+    display: inline-block;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+/* ==========================================================================
+   5. Badges, Buttons & Media Previews
+   ========================================================================== */
+.jw-badge {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+.jw-badge-green,
+.jw-badge-success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #86efac;
+}
+
+.jw-badge-red,
+.jw-badge-danger {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+.jw-badge-saffron,
+.jw-badge-warning {
+    background: #ffedd5;
+    color: #9a3412;
+    border: 1px solid #fdba74;
+}
+
+.jw-badge-teal,
+.jw-badge-info {
+    background: #ccfbf1;
+    color: #115e59;
+    border: 1px solid #5eead4;
+}
+
+/* Buttons */
+.jw-btn-primary {
+    background: #0f766e !important;
+    border-color: #115e59 !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    padding: 5px 14px !important;
+    text-shadow: none !important;
+}
+
+.jw-btn-primary:hover {
+    background: #115e59 !important;
+    color: #ffffff !important;
+}
+
+.jw-btn-saffron {
+    background: #ea580c !important;
+    border-color: #c2410c !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    padding: 5px 14px !important;
+    text-shadow: none !important;
+}
+
+.jw-btn-saffron:hover {
+    background: #c2410c !important;
+    color: #ffffff !important;
+}
+
+/* Thumbnails & Secret Masks */
+.jw-thumb-preview {
+    margin-top: 6px;
+    max-width: 96px;
+    max-height: 96px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #cbd5e1;
+}
+
+.jw-secret-mask {
+    display: inline-block;
+    background: #e2e8f0;
+    color: #1e293b;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 12px;
+    max-width: 100%;
+    word-break: break-all;
+}

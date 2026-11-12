@@ -1,0 +1,1521 @@
+MASTER PROJECT PROMPT: JYOTISHWALA
+
+Complete Vedic Astrology, Panchang, Sanatan Dharma & AI Super App
+
+You are an expert team of senior software architects, full-stack developers, UI/UX designers, Vedic astrology specialists, astronomy calculation engineers, AI engineers, database architects, and cybersecurity specialists.
+
+Your task is to design and develop a complete, professional, scalable, production-ready digital platform named JyotishWala.
+
+Official website: https://jyotishwala.com
+
+The project must be developed using Google AI Studio Build Mode, with modern web technologies and a scalable architecture.
+
+Do not create just a landing page, static UI, or simple demo. Build a complete functional application with working navigation, reusable components, user authentication architecture, database integration, APIs, calculation modules, admin dashboard, and all the features specified below.
+
+If a feature requires an external API, third-party service, database, payment gateway, or API key, create the appropriate integration architecture and configuration interface. Never pretend that an unconnected service is operational.
+
+---
+
+1. PROJECT VISION
+
+Create JyotishWala as a comprehensive digital ecosystem combining:
+
+1. Vedic Astrology.
+2. Hindu Panchang.
+3. Kundli Generation and Analysis.
+4. Horoscope and Predictions.
+5. Muhurat Calculation.
+6. Marriage Compatibility.
+7. Numerology.
+8. Vastu Shastra.
+9. Gemstones and Rudraksha.
+10. Sanatan Dharma.
+11. Vedas, Upanishads, Puranas and Bhagavad Gita.
+12. Puja and Karmakanda.
+13. Sanskrit Mantras and Stotras.
+14. Astrology Learning Academy.
+15. AI Astrologer.
+16. AI Spiritual Knowledge Assistant.
+17. Online Pandit and Astrologer Consultation.
+18. Religious E-commerce.
+19. Multilingual Content Management.
+20. Premium Subscription Services.
+
+The application should become a complete one-stop platform for astrology, spirituality, religious education, and traditional Hindu knowledge.
+
+2. BRAND IDENTITY
+
+Brand Name: JyotishWala
+
+Official Website: jyotishwala.com
+
+Brand Colors:
+
+- Primary: #008080
+- Secondary: #FF7F33
+- Accent: Traditional Gold
+- Light Background: White and Warm Cream
+- Dark Background: Deep Teal and Dark Charcoal
+
+Typography:
+
+- Hindi: Noto Sans Devanagari
+- Sanskrit: Noto Serif Devanagari
+- English: Inter
+
+Design Direction:
+
+- Modern Indian spiritual aesthetics.
+- Premium and professional appearance.
+- Traditional Indian motifs and subtle mandala patterns.
+- Clean and accessible interface.
+- Responsive mobile-first design.
+- Beautiful cards and structured information.
+- Smooth animations without compromising performance.
+- Consistent design system across every module.
+
+The design must not look like a generic dashboard template.
+
+Create a distinctive visual identity for JyotishWala.
+
+3. MULTILINGUAL SYSTEM
+
+The default language must be Hindi.
+
+Provide a global language selector.
+
+Initially support:
+
+- Hindi
+- English
+- Sanskrit
+- Marathi
+- Gujarati
+- Bengali
+- Tamil
+- Telugu
+- Kannada
+- Malayalam
+- Punjabi
+- Nepali
+
+Requirements:
+
+1. All menus must support translation.
+2. All buttons and navigation labels must support translation.
+3. Articles must support multiple languages.
+4. Horoscope interpretations must support multiple languages.
+5. Panchang must support multiple languages.
+6. AI responses must follow the selected language.
+7. Notifications must follow the selected language.
+8. User preferences must be saved.
+9. Language selection must persist between sessions.
+10. Provide a proper translation management system.
+
+Important:
+
+- Sanskrit verses must retain their original text.
+- Show Sanskrit verses in Devanagari.
+- Provide transliteration where appropriate.
+- Provide meaning and explanation in the selected language.
+- Do not automatically translate technical Sanskrit terminology incorrectly.
+- Maintain a consistent astrology glossary across languages.
+
+Use a scalable internationalization architecture such as i18next.
+
+4. HOME DASHBOARD
+
+Create a personalized home dashboard.
+
+Display:
+
+- Greeting and user profile.
+- Current date.
+- Today's Panchang.
+- Today's Horoscope.
+- Daily Tithi.
+- Nakshatra.
+- Yoga.
+- Karana.
+- Sunrise and Sunset.
+- Moonrise and Moonset.
+- Rahu Kaal.
+- Yamaganda.
+- Gulika Kaal.
+- Abhijit Muhurat.
+- Brahma Muhurat.
+- Choghadiya.
+- Today's Festivals.
+- Upcoming Vrats.
+- Current Planetary Transits.
+- Personalized Horoscope.
+- Quick Kundli Access.
+- Kundli Matching.
+- Muhurat Finder.
+- Astrology Articles.
+- Spiritual Knowledge.
+- Latest Astrology Updates.
+- AI Astrologer Assistant.
+
+Add customizable dashboard widgets.
+
+Allow users to rearrange or hide widgets where practical.
+
+5. COMPLETE VEDIC ASTROLOGY MODULE
+
+Create a comprehensive Vedic Astrology section.
+
+5.1 Birth Kundli Generator
+
+Allow users to enter:
+
+- Full Name.
+- Gender (optional).
+- Date of Birth.
+- Exact Time of Birth.
+- Birthplace.
+- Latitude.
+- Longitude.
+- Time Zone.
+
+Generate:
+
+- North Indian Kundli.
+- South Indian Kundli.
+- East Indian Kundli.
+- Lagna Chart.
+- Moon Chart.
+- Sun Chart.
+- Navamsa Chart.
+- All 16 Shodashvarga Charts.
+
+Include:
+
+D1, D2, D3, D4, D7, D9, D10, D12, D16, D20, D24, D27, D30, D40, D45 and D60.
+
+Display:
+
+- Planetary Positions.
+- Planetary Degrees.
+- Zodiac Signs.
+- Houses.
+- Nakshatra.
+- Nakshatra Pada.
+- Planetary Lords.
+- Retrograde Planets.
+- Combust Planets.
+- Exalted Planets.
+- Debilitated Planets.
+- Planetary Aspects.
+- Planetary Conjunctions.
+- House Lords.
+- Bhava Chalit.
+- Shadbala.
+- Bhava Bala.
+- Ashtakavarga.
+
+Provide detailed interpretations.
+
+5.2 Kundli Analysis
+
+Analyze:
+
+- Ascendant.
+- Twelve Houses.
+- Twelve House Lords.
+- Nine Planets.
+- Planetary Strength.
+- Planetary Relationships.
+- Yogas.
+- Raj Yogas.
+- Dhana Yogas.
+- Vipreet Raj Yoga.
+- Neech Bhang Raj Yoga.
+- Gajakesari Yoga.
+- Pancha Mahapurusha Yoga.
+- Kaal Sarp Yoga.
+- Kemadruma Yoga.
+- Grahan Yoga.
+- Manglik Dosha.
+- Pitra Dosha.
+- Other traditional planetary combinations.
+
+Provide separate sections for:
+
+- Career.
+- Business.
+- Education.
+- Marriage.
+- Relationships.
+- Children.
+- Wealth.
+- Property.
+- Foreign Travel.
+- Spirituality.
+- General Health Indications.
+
+Do not generate deterministic or fear-based predictions.
+
+5.3 Dasha System
+
+Implement:
+
+- Vimshottari Mahadasha.
+- Antardasha.
+- Pratyantardasha.
+- Sookshma Dasha.
+- Prana Dasha.
+- Yogini Dasha.
+- Ashtottari Dasha.
+- Kalachakra Dasha.
+
+Show:
+
+- Current Mahadasha.
+- Current Antardasha.
+- Upcoming Dasha Periods.
+- Start and End Dates.
+- Planetary Interpretations.
+- Relevant Transit Information.
+
+5.4 Different Astrology Systems
+
+Provide separate modules for:
+
+A. Parashari Astrology:
+
+- Graha Drishti.
+- Rashi Drishti where applicable.
+- Bhava Analysis.
+- Vimshottari Dasha.
+- Yogas.
+- Divisional Charts.
+
+B. Jaimini Astrology:
+
+- Chara Karakas.
+- Atmakaraka.
+- Amatyakaraka.
+- Karakamsha.
+- Rashi Drishti.
+- Chara Dasha.
+- Jaimini Principles.
+
+C. Tajika Astrology:
+
+- Varshaphala.
+- Muntha.
+- Saham.
+- Tajika Yogas.
+- Annual Predictions.
+
+D. KP Astrology:
+
+- Cusps.
+- Nakshatra Lords.
+- Sub Lords.
+- Sub-Sub Lords.
+- KP Significators.
+- KP House Analysis.
+
+E. Prashna Jyotish:
+
+- Question Chart.
+- Prashna Lagna.
+- Planetary Significators.
+- Question-Based Analysis.
+
+F. Lal Kitab:
+
+- Planetary Positions.
+- House-Based Analysis.
+- Traditional Remedies.
+
+Keep each system logically separate.
+
+Do not mix calculation rules between different astrology systems.
+
+6. KUNDLI MATCHING AND MARRIAGE COMPATIBILITY
+
+Create a complete marriage compatibility module.
+
+Allow entry of two individuals' birth details.
+
+Calculate:
+
+- Ashtakoota Guna Milan.
+- Varna.
+- Vashya.
+- Tara.
+- Yoni.
+- Graha Maitri.
+- Gana.
+- Bhakoot.
+- Nadi.
+- Total Gunas.
+- Manglik Compatibility.
+- Seventh House Analysis.
+- Venus and Jupiter Analysis.
+- Navamsa Compatibility.
+- Relevant Dasha Comparison.
+
+Generate a detailed compatibility report.
+
+Include:
+
+- Overall compatibility.
+- Strengths.
+- Potential challenges.
+- Traditional astrological observations.
+- Marriage Muhurat Suggestions.
+
+Allow PDF download and sharing.
+
+Do not reduce marriage compatibility to a single score.
+
+7. PANCHANG AND HINDU CALENDAR
+
+Create a complete Panchang engine.
+
+Daily Panchang:
+
+- Tithi.
+- Paksha.
+- Vara.
+- Nakshatra.
+- Yoga.
+- Karana.
+- Sunrise.
+- Sunset.
+- Moonrise.
+- Moonset.
+- Day Duration.
+- Night Duration.
+- Rahu Kaal.
+- Yamaganda.
+- Gulika Kaal.
+- Abhijit Muhurat.
+- Brahma Muhurat.
+- Godhuli Muhurat.
+- Nishita Kaal.
+
+Calendar Systems:
+
+- Vikram Samvat.
+- Shaka Samvat.
+- Amanta Calendar.
+- Purnimanta Calendar.
+- Lunar Months.
+- Solar Months.
+- Adhik Maas.
+- Kshaya Maas.
+- Ritu.
+- Ayana.
+
+Provide monthly and yearly Hindu calendars.
+
+Festivals and Vrats
+
+Include:
+
+- Ekadashi.
+- Pradosh Vrat.
+- Maha Shivaratri.
+- Purnima.
+- Amavasya.
+- Sankashti Chaturthi.
+- Vinayaka Chaturthi.
+- Navratri.
+- Durga Ashtami.
+- Ram Navami.
+- Krishna Janmashtami.
+- Diwali.
+- Holi.
+- Makar Sankranti.
+- Chhath Puja.
+- Hartalika Teej.
+- Karwa Chauth.
+- Regional Festivals.
+- Other Hindu Religious Observances.
+
+Include festival descriptions, significance, dates, puja procedures and relevant mantras.
+
+Support city-specific Panchang calculations.
+
+Allow users to select their city and preferred Panchang tradition.
+
+8. MUHURAT CALCULATOR
+
+Create a complete Muhurat Finder.
+
+Include:
+
+- Marriage Muhurat.
+- Engagement Muhurat.
+- Griha Pravesh.
+- Bhumi Pujan.
+- Shilanyas.
+- Vastu Puja.
+- Namkaran.
+- Annaprashan.
+- Mundan.
+- Vidyarambha.
+- Upanayana.
+- Karnavedha.
+- Vehicle Purchase.
+- Business Opening.
+- Shop Opening.
+- Property Purchase.
+- Travel Muhurat.
+- Agriculture Muhurat.
+- Deity Installation.
+- Religious Ceremonies.
+
+Consider traditional factors:
+
+- Tithi.
+- Vara.
+- Nakshatra.
+- Yoga.
+- Karana.
+- Lagna.
+- Tara Bala.
+- Chandra Bala.
+- Panchaka.
+- Other applicable Muhurta principles.
+
+Display the reason behind every suggested Muhurat.
+
+Allow date range and location selection.
+
+9. PLANETARY TRANSIT AND PREDICTION MODULE
+
+Implement:
+
+- Daily Transit.
+- Weekly Transit.
+- Monthly Transit.
+- Yearly Transit.
+- Saturn Sade Sati.
+- Saturn Dhaiya.
+- Jupiter Transit.
+- Rahu Transit.
+- Ketu Transit.
+- Solar Ingress.
+- Planetary Conjunctions.
+- Retrograde Movements.
+- Direct Movements.
+- Solar Eclipse.
+- Lunar Eclipse.
+
+Provide personal transit analysis based on the saved birth chart.
+
+10. ASTROLOGY CALCULATORS
+
+Build individual working calculators for:
+
+1. Lagna Calculator.
+2. Moon Sign Calculator.
+3. Sun Sign Calculator.
+4. Nakshatra Calculator.
+5. Nakshatra Pada Calculator.
+6. Tithi Calculator.
+7. Yoga Calculator.
+8. Karana Calculator.
+9. Rahu Kaal Calculator.
+10. Choghadiya Calculator.
+11. Hora Calculator.
+12. Navamsa Calculator.
+13. Ashtakavarga Calculator.
+14. Ayanamsha Calculator.
+15. Dasha Calculator.
+16. Planetary Degree Calculator.
+17. Eclipse Calculator.
+18. Numerology Calculator.
+19. Name Initial Calculator.
+20. Panchang Calculator.
+
+Every calculator must have a proper input form, calculation logic, validation and readable results.
+
+11. VASTU SHASTRA
+
+Create a dedicated Vastu module.
+
+Include:
+
+- Vastu Fundamentals.
+- Eight Directions.
+- Ten Directions.
+- Vastu Purusha Mandala.
+- 45 Vastu Deities.
+- 64 Pada Vastu.
+- 81 Pada Vastu.
+- Land Selection.
+- Land Testing.
+- House Construction.
+- Main Entrance.
+- Kitchen.
+- Bedroom.
+- Puja Room.
+- Bathroom.
+- Water Sources.
+- Commercial Vastu.
+- Office Vastu.
+- Shop Vastu.
+- Traditional Vastu Remedies.
+
+Future feature:
+
+Allow users to upload house plans or floor plans for AI-assisted preliminary Vastu analysis.
+
+Make clear that AI analysis is informational and not a substitute for a qualified professional assessment.
+
+12. NUMEROLOGY AND NAME ASTROLOGY
+
+Include:
+
+- Mulank.
+- Bhagyank.
+- Namank.
+- Birth Number.
+- Destiny Number.
+- Name Analysis.
+- Lucky Numbers.
+- Lucky Days.
+- Lucky Colors.
+- Personal Year.
+- Personal Month.
+- Mobile Number Analysis.
+- Vehicle Number Analysis.
+- Business Name Analysis.
+
+Support separate calculation systems:
+
+- Pythagorean Numerology.
+- Chaldean Numerology.
+
+Do not mix the rules of different numerology systems.
+
+13. GEMSTONES, RUDRAKSHA AND REMEDIES
+
+Create an educational section containing:
+
+- Navagraha Gemstones.
+- Substitute Gemstones.
+- Gemstone Properties.
+- Traditional Planetary Associations.
+- Traditional Wearing Procedures.
+- Rudraksha Types.
+- Different Mukhi Rudraksha.
+- Rudraksha Wearing Procedures.
+- Navagraha Mantras.
+- Beej Mantras.
+- Stotras.
+- Kavachas.
+- Yantras.
+- Donations.
+- Fasting.
+- Japa.
+- Havan.
+- Graha Shanti.
+
+Provide historical and scriptural context where available.
+
+Never guarantee financial, medical or personal results from gemstones or remedies.
+
+14. AI JYOTISH ASSISTANT
+
+Create an intelligent AI Astrologer.
+
+Name: JyotishWala AI
+
+It should support:
+
+- Hindi Conversation.
+- English Conversation.
+- Other Supported Languages.
+- Text Questions.
+- Voice Input.
+- Voice Output.
+- Birth Chart Analysis.
+- Kundli Screenshot Analysis.
+- PDF Kundli Analysis.
+- Dasha Interpretation.
+- Transit Interpretation.
+- Yoga Analysis.
+- Muhurat Guidance.
+- Marriage Compatibility Explanation.
+- Astrology Learning.
+- Follow-up Questions.
+- Conversation History.
+
+Example questions:
+
+- मेरी कुंडली में कौन-सा योग बन रहा है?
+- मेरी वर्तमान महादशा कौन-सी है?
+- मेरी कुंडली में विवाह योग कब है?
+- शनि किस भाव में स्थित है?
+- मेरी कुंडली में धन योग है या नहीं?
+- गुरु गोचर का क्या प्रभाव होगा?
+- मेरी कुंडली में कौन-से ग्रह उच्च हैं?
+
+Important AI Architecture:
+
+1. Use a reliable astrology calculation engine.
+2. Retrieve actual chart data before generating interpretations.
+3. Never invent planetary positions.
+4. Never invent Sanskrit verses or scriptural references.
+5. Use RAG-based retrieval for verified religious and astrology knowledge.
+6. Provide source references whenever possible.
+7. Keep astrology, religious information and general AI responses distinguishable.
+8. Include appropriate disclaimers.
+9. Store conversations securely.
+10. Allow users to delete their AI conversation history.
+
+Use a configurable AI provider architecture so models can be upgraded later.
+
+15. SANATAN DHARMA KNOWLEDGE LIBRARY
+
+Build a comprehensive digital religious library.
+
+Scriptures
+
+- Rigveda.
+- Yajurveda.
+- Samaveda.
+- Atharvaveda.
+- Principal Upanishads.
+- Bhagavad Gita.
+- Brahma Sutras.
+- 18 Mahapuranas.
+- Upapuranas.
+- Ramayana.
+- Mahabharata.
+- Yoga Vashistha.
+- Dharma Shastras.
+- Smritis.
+- Aranyakas.
+- Brahmanas.
+- Agama and Nigama.
+- Tantra Literature.
+- Stotra Literature.
+
+Indian Philosophy
+
+- Sankhya Darshan.
+- Yoga Darshan.
+- Nyaya Darshan.
+- Vaisheshika Darshan.
+- Purva Mimamsa.
+- Vedanta.
+- Advaita Vedanta.
+- Vishishtadvaita.
+- Dvaita Vedanta.
+- Bhakti Philosophy.
+- Karma Yoga.
+- Jnana Yoga.
+- Bhakti Yoga.
+
+Provide search, categorization, bookmarks and reading history.
+
+For each available text, provide:
+
+- Original Sanskrit Text.
+- Transliteration.
+- Hindi Meaning.
+- Detailed Explanation.
+- English Translation.
+- Chapter and Verse References.
+- Source Information.
+
+Do not fabricate missing scripture content.
+
+16. PUJA AND KARMKANDA LIBRARY
+
+Include complete educational and practical guides for:
+
+- Daily Puja.
+- Sankalpa.
+- Ganesha Puja.
+- Kalasha Sthapana.
+- Panchopachara Puja.
+- Shodashopachara Puja.
+- Navagraha Puja.
+- Rudrabhishek.
+- Durga Puja.
+- Lakshmi Puja.
+- Saraswati Puja.
+- Bhumi Pujan.
+- Griha Pravesh.
+- Vivaha Sanskar.
+- Namkaran Sanskar.
+- Annaprashan.
+- Mundan.
+- Upanayana.
+- Shraddha.
+- Tarpana.
+- Havan.
+- Yajna.
+
+For each procedure provide:
+
+1. Puja Samagri.
+2. Preparation.
+3. Sankalpa.
+4. Vinayoga.
+5. Rishi, Chhanda and Devata information where applicable.
+6. Nyasa.
+7. Dhyana.
+8. Avahana.
+9. Main Puja.
+10. Mantras.
+11. Offerings.
+12. Havan procedure where applicable.
+13. Aarti.
+14. Pradakshina.
+15. Kshama Prarthana.
+16. Visarjana where applicable.
+
+Provide traditional variations and clearly identify their sources.
+
+17. ASTROLOGY LEARNING ACADEMY
+
+Build a structured learning platform.
+
+Courses:
+
+- Introduction to Jyotish.
+- Nine Planets.
+- Twelve Zodiac Signs.
+- Twelve Houses.
+- Twenty-Seven Nakshatras.
+- Planetary Aspects.
+- Planetary Friendships.
+- Exaltation and Debilitation.
+- Bhavesh Analysis.
+- Yoga Formation.
+- Dasha Systems.
+- Transit Analysis.
+- Divisional Charts.
+- Prashna Jyotish.
+- Muhurta Jyotish.
+- Advanced Parashari.
+- Jaimini Astrology.
+- KP Astrology.
+- Numerology.
+- Vastu Shastra.
+
+Features:
+
+- Video Lessons.
+- PDF Notes.
+- Audio Lessons.
+- Quizzes.
+- Practice Charts.
+- Course Progress.
+- Certificates.
+- Student Dashboard.
+- Course Bookmarks.
+
+18. ASTROLOGY BLOG AND CONTENT SYSTEM
+
+Integrate the existing JyotishWala website content.
+
+Website: https://jyotishwala.com
+
+Create a centralized content management architecture.
+
+Content Categories:
+
+- Daily Horoscope.
+- Weekly Horoscope.
+- Monthly Horoscope.
+- Annual Horoscope.
+- Planetary Transit.
+- Panchang.
+- Festivals.
+- Vrats.
+- Astrology Articles.
+- Vastu.
+- Numerology.
+- Religious Knowledge.
+- Puja Procedures.
+- Mantras.
+- Spirituality.
+
+Requirements:
+
+- Fetch existing articles through the website API if supported.
+- Preserve article URLs and SEO information.
+- Avoid duplicate content.
+- Support multilingual articles.
+- Provide article categories and tags.
+- Add related articles.
+- Add bookmarks and sharing.
+- Provide a content synchronization system.
+
+If the current website technology or API is unknown, inspect the publicly accessible website where possible and ask for the necessary API or CMS credentials rather than assuming the backend.
+
+19. USER ACCOUNT AND PERSONAL DASHBOARD
+
+Implement:
+
+- Email Registration.
+- Mobile Registration.
+- OTP Authentication.
+- Google Login.
+- User Profile.
+- Birth Details.
+- Multiple Birth Profiles.
+- Family Kundli Profiles.
+- Saved Kundlis.
+- Saved Reports.
+- Favorite Articles.
+- Favorite Mantras.
+- Favorite Puja Guides.
+- Reading History.
+- Search History.
+- Notification Preferences.
+- Language Preferences.
+- Dark Mode.
+- Account Settings.
+- Data Export.
+- Account Deletion.
+
+Protect sensitive birth information with proper access controls.
+
+20. ADVANCED AI FEATURES
+
+Add the following AI modules:
+
+- AI Kundli Reader.
+- AI Panchang Assistant.
+- AI Muhurat Assistant.
+- AI Shloka Translator.
+- AI Sanskrit Pronunciation Assistant.
+- AI Mantra Guide.
+- AI Vastu Assistant.
+- AI Astrology Teacher.
+- AI PDF Report Generator.
+- AI Scripture Search.
+- AI Voice Assistant.
+
+AI responses must be grounded in verified information wherever possible.
+
+21. E-COMMERCE AND RELIGIOUS STORE
+
+Create an integrated marketplace.
+
+Products:
+
+- Puja Samagri.
+- Rudraksha.
+- Religious Books.
+- Astrology Books.
+- Yantras.
+- Malas.
+- Puja Kits.
+- Panchang.
+- Religious Calendars.
+- Other Approved Spiritual Products.
+
+Features:
+
+- Product Search.
+- Categories.
+- Filters.
+- Product Details.
+- Cart.
+- Wishlist.
+- Checkout.
+- Payment Integration.
+- Order History.
+- Shipping Tracking.
+- Reviews.
+- Refund Management.
+- Inventory Management.
+- Admin Product Management.
+
+22. PANDIT AND ASTROLOGER BOOKING
+
+Create a professional service marketplace.
+
+Features:
+
+- Pandit Profiles.
+- Astrologer Profiles.
+- Expertise.
+- Experience.
+- Languages.
+- Availability.
+- Consultation Charges.
+- Appointment Booking.
+- Audio Consultation.
+- Video Consultation.
+- Chat Consultation.
+- Online Payments.
+- Booking History.
+- Reviews and Ratings.
+- Cancellation and Refund Rules.
+
+Create a separate professional dashboard for service providers.
+
+23. NOTIFICATIONS AND REMINDERS
+
+Implement push notifications for:
+
+- Daily Panchang.
+- Daily Horoscope.
+- Vrats.
+- Festivals.
+- Ekadashi.
+- Purnima.
+- Amavasya.
+- Planetary Transits.
+- Dasha Changes.
+- Birthday Reminders.
+- Anniversary Reminders.
+- Puja Reminders.
+- Japa Reminders.
+- Personalized Muhurat Alerts.
+
+Allow users to control notification preferences.
+
+24. FIVE-TAB MAIN NAVIGATION
+
+Create a clear bottom navigation with five main tabs:
+
+1. HOME
+   
+   - Dashboard.
+   - Daily Horoscope.
+   - Articles.
+   - Personalized Updates.
+
+2. JYOTISH
+   
+   - Kundli.
+   - Kundli Matching.
+   - Dasha.
+   - Transit.
+   - Muhurat.
+   - Calculators.
+   - Numerology.
+   - Vastu.
+
+3. PANCHANG
+   
+   - Daily Panchang.
+   - Hindu Calendar.
+   - Festivals.
+   - Vrats.
+   - Choghadiya.
+   - Muhurat.
+
+4. DHARMA
+   
+   - Vedas.
+   - Upanishads.
+   - Puranas.
+   - Bhagavad Gita.
+   - Puja.
+   - Mantras.
+   - Stotras.
+   - Karmakanda.
+   - Learning Academy.
+
+5. PROFILE
+   
+   - Account.
+   - Saved Kundlis.
+   - Saved Reports.
+   - Bookmarks.
+   - Language.
+   - Settings.
+   - Subscription.
+
+Add a floating AI assistant button accessible from all main screens.
+
+25. ADMIN DASHBOARD
+
+Create a powerful, secure admin panel.
+
+Admin modules:
+
+- Dashboard Analytics.
+- User Management.
+- Role Management.
+- Article Management.
+- Multilingual Content Management.
+- Categories.
+- Tags.
+- Panchang Management.
+- Festival Management.
+- Astrology Content Management.
+- Puja Content Management.
+- Scripture Library Management.
+- Course Management.
+- Video Management.
+- Astrologer Management.
+- Pandit Management.
+- Booking Management.
+- Product Management.
+- Orders.
+- Payments.
+- Subscription Management.
+- Advertisement Management.
+- Push Notifications.
+- AI Configuration.
+- API Configuration.
+- Reports.
+- Customer Support.
+- Feedback Management.
+- Moderation.
+- Security Logs.
+
+Support different access roles:
+
+- Super Admin.
+- Content Editor.
+- Astrology Expert.
+- Pandit.
+- Astrologer.
+- Customer Support.
+- User.
+
+26. MONETIZATION AND SUBSCRIPTIONS
+
+Create a flexible monetization system.
+
+FREE PLAN:
+
+- Basic Panchang.
+- Daily Horoscope.
+- Basic Kundli.
+- Basic Planetary Positions.
+- Limited Articles.
+- Basic Calculators.
+
+PREMIUM PLAN:
+
+- Detailed Kundli Analysis.
+- All Divisional Charts.
+- Detailed Dasha Reports.
+- Marriage Compatibility Reports.
+- Advanced Astrology Calculators.
+- AI Astrologer Access.
+- PDF Reports.
+- Premium Courses.
+- Ad-Free Experience.
+
+ADDITIONAL REVENUE:
+
+- Consultation Commissions.
+- Paid Courses.
+- Religious Products.
+- Puja Booking.
+- Special Reports.
+- Advertising.
+
+Create subscription management, renewal, cancellation, payment history and entitlement validation.
+
+Integrate Razorpay or another suitable payment gateway where applicable.
+
+27. TECHNICAL ARCHITECTURE
+
+Use a modular, scalable architecture.
+
+Suggested technology:
+
+Frontend:
+
+- React.
+- TypeScript.
+- Modern responsive UI.
+- Tailwind CSS.
+- Reusable components.
+
+Mobile:
+
+- Flutter or a properly structured cross-platform solution.
+- Design the initial web application so it can later be packaged or migrated into Android and iOS applications.
+
+Backend:
+
+- Node.js.
+- NestJS or Express.
+- REST APIs.
+- Secure authentication.
+
+Database:
+
+- PostgreSQL.
+- Redis for caching where needed.
+
+Storage:
+
+- Secure cloud storage for PDFs, images and documents.
+
+AI:
+
+- Google Gemini API or configurable LLM provider.
+- Retrieval-Augmented Generation.
+- Secure server-side AI requests.
+
+Notifications:
+
+- Firebase Cloud Messaging.
+
+Payments:
+
+- Razorpay integration.
+
+Analytics:
+
+- Firebase Analytics or equivalent.
+
+IMPORTANT:
+Google AI Studio is the development environment, not the complete production backend. Build the architecture so external infrastructure can be connected properly.
+
+Never expose secret API keys in frontend source code.
+
+Use environment variables and server-side secrets.
+
+28. ASTROLOGICAL CALCULATION ENGINE
+
+This is one of the most critical components.
+
+Implement a dedicated deterministic calculation engine.
+
+Evaluate Swiss Ephemeris or another reliable astronomical calculation library.
+
+Support:
+
+- Lahiri Ayanamsha.
+- Raman Ayanamsha.
+- Other supported Ayanamsha options.
+- Sidereal Zodiac.
+- Tropical Zodiac where relevant.
+- Planetary Longitude.
+- Ascendant.
+- House Cusps.
+- Retrograde Status.
+- Planetary Speed.
+- Sunrise.
+- Sunset.
+- Moonrise.
+- Moonset.
+- Tithi.
+- Nakshatra.
+- Yoga.
+- Karana.
+- Dasha Calculations.
+
+Ensure:
+
+1. Correct time-zone handling.
+2. Daylight-saving handling where applicable.
+3. Correct geographical coordinates.
+4. Accurate astronomical calculations.
+5. Consistent calculation settings.
+6. Unit tests for known reference charts.
+7. Comparison against established Panchang and ephemeris references.
+8. Transparent calculation methodology.
+
+Do not create fake astrology calculations or use random placeholder planetary positions.
+
+Check software licenses before commercial deployment, especially Swiss Ephemeris licensing.
+
+29. DATABASE DESIGN
+
+Create a properly normalized database architecture.
+
+Include tables or equivalent entities for:
+
+- Users.
+- User Profiles.
+- Birth Profiles.
+- Birth Locations.
+- Kundli Charts.
+- Planetary Positions.
+- Divisional Charts.
+- Dasha Periods.
+- Astrology Reports.
+- Compatibility Reports.
+- Panchang Records.
+- Festival Records.
+- Muhurat Records.
+- Articles.
+- Article Translations.
+- Scripture Records.
+- Scripture Translations.
+- Mantras.
+- Puja Guides.
+- Courses.
+- Lessons.
+- Quizzes.
+- Bookmarks.
+- Reading History.
+- AI Conversations.
+- AI Messages.
+- Notifications.
+- Products.
+- Orders.
+- Payments.
+- Subscriptions.
+- Astrologers.
+- Pandits.
+- Appointments.
+- Reviews.
+- Admin Roles.
+- Audit Logs.
+
+Define relationships, indexes, constraints and data validation.
+
+30. SECURITY AND PRIVACY
+
+Implement:
+
+- Secure Authentication.
+- Role-Based Access Control.
+- API Validation.
+- Rate Limiting.
+- Input Sanitization.
+- Secure Session Management.
+- Encryption in Transit.
+- Appropriate Encryption at Rest.
+- Secure File Upload.
+- Payment Security.
+- Audit Logging.
+- Backup and Recovery.
+- User Consent.
+- Privacy Policy.
+- Terms and Conditions.
+- Data Export.
+- Account Deletion.
+
+Follow applicable Indian data protection requirements, including the DPDP framework.
+
+Do not expose personal birth details or user reports to other users.
+
+31. OFFLINE AND ACCESSIBILITY FEATURES
+
+Include:
+
+- Offline Saved Kundlis.
+- Offline Saved Articles.
+- Offline Panchang Data Where Feasible.
+- Dark Mode.
+- Adjustable Font Size.
+- Screen Reader Support.
+- Good Color Contrast.
+- Fast Loading.
+- Low-Bandwidth Optimization.
+- Responsive Design.
+
+32. DEVELOPMENT PHASES
+
+Develop the application in the following phases.
+
+PHASE 1: FOUNDATION AND MVP
+
+- Branding.
+- Responsive UI.
+- Multilingual Architecture.
+- User Authentication.
+- Home Dashboard.
+- Website Content Integration.
+- Basic Panchang.
+- Daily Horoscope.
+- Basic Kundli Generator.
+- Planetary Positions.
+- Admin Dashboard.
+- Notifications.
+
+PHASE 2: CORE ASTROLOGY
+
+- Sixteen Divisional Charts.
+- Dasha System.
+- Yoga and Dosha Analysis.
+- Ashtakavarga.
+- Kundli Matching.
+- Planetary Transits.
+- Muhurat Finder.
+- PDF Reports.
+- Saved Birth Profiles.
+
+PHASE 3: ADVANCED ASTROLOGY
+
+- Jaimini.
+- KP.
+- Tajika.
+- Prashna.
+- Numerology.
+- Vastu.
+- Gemstones.
+- Rudraksha.
+- Advanced Calculators.
+
+PHASE 4: SANATAN DHARMA
+
+- Vedas.
+- Upanishads.
+- Puranas.
+- Bhagavad Gita.
+- Sanskrit Literature.
+- Puja and Karmakanda.
+- Mantras.
+- Stotras.
+- Learning Academy.
+
+PHASE 5: AI AND PREMIUM
+
+- AI Astrologer.
+- AI Kundli Analysis.
+- AI Panchang Assistant.
+- AI Shloka Translator.
+- AI Vastu Assistant.
+- Voice Assistant.
+- Premium Subscription.
+- Payment Gateway.
+
+PHASE 6: BUSINESS EXPANSION
+
+- Pandit Booking.
+- Astrologer Booking.
+- Online Consultations.
+- Religious Store.
+- Online Puja Services.
+- Community Features.
+- International Expansion.
+
+33. DEVELOPMENT INSTRUCTIONS FOR GOOGLE AI STUDIO
+
+Follow these instructions carefully.
+
+1. First analyze the complete project requirements.
+2. Create a complete application architecture.
+3. Create a professional design system.
+4. Create the project folder structure.
+5. Create reusable components.
+6. Implement the five-tab navigation.
+7. Implement all major pages and modules.
+8. Build working forms and user interactions.
+9. Implement the multilingual architecture.
+10. Create database schemas.
+11. Create API integration layers.
+12. Build the astrology calculation service separately.
+13. Create the AI assistant architecture.
+14. Build the admin dashboard.
+15. Implement authentication architecture.
+16. Add error handling.
+17. Add loading states.
+18. Add empty states.
+19. Add validation.
+20. Add responsive layouts.
+21. Test all navigation and user interactions.
+
+Do not attempt to generate the entire application as one enormous unstructured component.
+
+Use modular files, reusable components, services, types and clear separation of concerns.
+
+If the project is too large for one generation, implement it in sequential development milestones while preserving the complete architecture and feature roadmap.
+
+Do not silently remove any requested feature.
+
+Maintain a feature implementation checklist.
+
+For each feature, identify its status:
+
+- Implemented.
+- Partially Implemented.
+- Requires External API.
+- Requires Database.
+- Requires Paid Service.
+- Planned for Later Phase.
+
+Never mark a nonfunctional placeholder as completed.
+
+34. UI/UX REQUIREMENTS
+
+The entire application must be mobile-first.
+
+Every screen must have:
+
+- Proper page title.
+- Consistent header.
+- Clear navigation.
+- Appropriate icons.
+- Readable typography.
+- Good spacing.
+- Responsive cards.
+- Working buttons.
+- Search and filtering where required.
+- Proper empty states.
+- Loading indicators.
+- Error messages.
+- Back navigation.
+
+Use Hindi as the default interface language.
+
+All major buttons, cards and navigation items must work.
+
+Do not create decorative buttons that do nothing.
+
+Use realistic sample data only when actual data services are not connected, and clearly label it as DEMO DATA.
+
+35. FINAL DELIVERY EXPECTATIONS
+
+The final JyotishWala application should include:
+
+1. Complete responsive application.
+2. Home Dashboard.
+3. All main navigation screens.
+4. Complete astrology module structure.
+5. Kundli generator architecture.
+6. Panchang module.
+7. Muhurat module.
+8. Marriage compatibility module.
+9. Vastu module.
+10. Numerology module.
+11. Sanatan Dharma library.
+12. Puja and Karmakanda library.
+13. AI assistant.
+14. Learning Academy.
+15. Multilingual architecture.
+16. User Profile.
+17. Admin Dashboard.
+18. Subscription Architecture.
+19. API Architecture.
+20. Database Schema.
+21. Security Architecture.
+22. Deployment Documentation.
+23. Testing Checklist.
+24. Feature Completion Checklist.
+
+The platform must be designed for future Android and iOS distribution.
+
+---
+
+MOST IMPORTANT FINAL INSTRUCTION
+
+Build JyotishWala as a serious, long-term commercial software product, not as a temporary prototype.
+
+Prioritize:
+
+- Accuracy over superficial functionality.
+- Classical knowledge over invented interpretations.
+- Real calculations over placeholder results.
+- Good UX over unnecessary complexity.
+- Modular architecture over monolithic code.
+- Security over convenience.
+- Scalability over short-term shortcuts.
+- Verified Sanskrit and scriptural references over fabricated content.
+
+Start by analyzing the requirements and creating the initial application architecture and project structure.
+
+Then implement Phase 1 as a fully navigable and functional MVP, while keeping the architecture ready for all subsequent phases.
+
+Do not discard, forget or simplify the remaining features.
+
+The ultimate goal is to build the most comprehensive Hindi-first multilingual Vedic Astrology and Sanatan Dharma digital platform under the JyotishWala brand.
